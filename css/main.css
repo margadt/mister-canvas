@@ -1,0 +1,92 @@
+body{
+    background-image: url('../img/wallpaper.jpg');
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.canvas-container {
+    background-color: transparent;
+    padding: 10px;
+}
+
+.my-canvas {
+    margin: 20px auto;
+    border: 1px solid blue;
+    display: block;
+}
+
+img {
+    display: none;
+    height: 150px;
+    width: 150px;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+li {
+    margin: 5px;
+    padding: 0;
+    list-style-type: none;
+}
+.nav-title{
+    text-align: center;
+    margin-bottom: 5vh;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.download-btn {
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: #ffa048;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+    text-decoration: none;
+}
+
+.triangle{
+    background-color: rgb(251, 113, 113);
+}
+
+.rect{
+    background-color: rgb(251, 219, 73);
+}
+
+.line{
+    color:white;
+    background-color:black;
+}
+
+.circle{
+    background-color: rgb(104, 151, 253);
+}
+
+.clear{
+    background-color: rgb(255, 51, 51);
+}
+
+.btn{
+    background-color: rgb(151, 87, 255);
+}
+

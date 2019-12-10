@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mister Canvas</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="init()">
+    <nav class="main-nav">
+        <div class="nav-title">Canvas Editor</div>
+        <ul class="main-menu">
+            <li><label class="label" for="fill-color">Fill-Color:</label></li>
+            <li><input title="Select fill color" type="color" class="fill-color" name="color"
+                    onchange="onSetFillColor()" /></li>
+            <li><label class="label" for="color">Color:</label></li>
+            <li><input title="Select color" type="color" class="color" name="color" onchange="onSetColor()" /></li>
+            <li><button class="triangle" onclick="setShape('triangle')">Triangle 🔺</button></li>
+            <li><button class="rect" onclick="setShape('rect')">Rectangle ⬜</button></li>
+            <li><button class="line" onclick="setShape('line')">Line ➖</button></li>
+            <li><button class="circle" onclick="setShape('circle')">Circle ⭕</button></li>
+            <li><button class="clear" onclick="clearCanvas()">Clear 🗑️</button></li>
+            <li>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="btn" type="submit">Publish 🌐</button>
+                    <div class="share-container"></div>
+                </form>
+            </li>
+            <li><a href="#" class="download-btn" onclick="downloadCanvas(this)" download="">Download 💾</a></li>
+        </ul>
+    </nav>
+    <main class="canvas-container">
+        <canvas class="my-canvas">
+            Update your browser to enjoy canvas!
+        </canvas>
+    </main>
+    <script src="js//upload-service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
