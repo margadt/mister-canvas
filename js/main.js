@@ -37,16 +37,17 @@ function setPosition(ev) {
     gLastPos.y = ev.offsetY;
 
 }
-function drawLine(ev) {
+function drawLine(x, y) {
     gCtx.save();
     gCtx.beginPath();
+    gCtx.arc(x, y, 10, 0, Math.PI * 2);
     gCtx.strokeStyle = gColor;
-    gCtx.moveTo(gLastPos.x, gLastPos.y);
-    setPosition(ev)
-    gCtx.lineTo(gLastPos.x, gLastPos.y);
+    gCtx.fillStyle = gFillColor;
     gCtx.stroke();
+    gCtx.fill();
     gCtx.restore();
 }
+
 
 function drawRect(x, y) {
     gCtx.save()
@@ -75,10 +76,10 @@ function drawTriangle(x, y) {
 
 }
 
-function drawArc(ev) {
+function drawArc(x, y) {
     gCtx.save();
     gCtx.beginPath();
-    gCtx.arc(ev.offsetX, ev.offsetY, 50, 0, Math.PI * 2);
+    gCtx.arc(x, y, 50, 0, Math.PI * 2);
     gCtx.strokeStyle = gColor;
     gCtx.fillStyle = gFillColor;
     gCtx.stroke();
@@ -100,13 +101,6 @@ function setShape(shape) {
     gCurrShape = shape;
 }
 
-function recoverOffsetValues(e) {
-    let rect = e.target.getBoundingClientRect();
-    gLastPos.x = e.targetTouches[0].pageX - rect.left;
-    gLastPos.y = e.targetTouches[0].pageY - rect.top;
-}
-
-
 function setTouchPos(touchEvent) {
     let rect = gCanvas.getBoundingClientRect();
     gLastPos.x = touchEvent.touches[0].clientX - rect.left;
@@ -119,7 +113,7 @@ function draw(ev) {
 
     const offsetX = ev.offsetX;
     const offsetY = ev.offsetY;
-   
+
     // const { offsetX, offsetY } = ev
     switch (gCurrShape) {
         case 'triangle':
@@ -129,10 +123,10 @@ function draw(ev) {
             drawRect(offsetX, offsetY);
             break;
         case 'line':
-            drawLine(ev);
+            drawLine(offsetX, offsetY, gLastPos.x, gLastPos.y);
             break;
         case 'circle':
-            drawArc(ev);
+            drawArc(offsetX, offsetY);
             break;
     }
     gCtx.restore()
@@ -150,10 +144,10 @@ function touchDraw(ev) {
             drawRect(offsetX, offsetY);
             break;
         case 'line':
-            drawLine(ev);
+            drawLine(offsetX, offsetY);
             break;
         case 'circle':
-            drawArc(ev);
+            drawArc(offsetX, offsetY);
             break;
     }
     setTouchPos(ev);
