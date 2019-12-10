@@ -37,17 +37,40 @@ function setPosition(ev) {
     gLastPos.y = ev.offsetY;
 
 }
-function drawLine(x, y) {
+// function drawLine(x, y) {
+//     gCtx.save();
+//     gCtx.beginPath();
+//     gCtx.arc(x, y, 10, 0, Math.PI * 2);
+//     gCtx.strokeStyle = gColor;
+//     gCtx.fillStyle = gFillColor;
+//     gCtx.stroke();
+//     gCtx.fill();
+//     gCtx.restore();
+// }
+
+function drawLine(ev) {
     gCtx.save();
-    gCtx.beginPath();
-    gCtx.arc(x, y, 10, 0, Math.PI * 2);
     gCtx.strokeStyle = gColor;
-    gCtx.fillStyle = gFillColor;
+    gCtx.beginPath();
+    gCtx.moveTo(gLastPos.x, gLastPos.y);
+    setPosition(ev);
+    gCtx.lineTo(gLastPos.x, gLastPos.y);
+    gCtx.closePath()
     gCtx.stroke();
-    gCtx.fill();
     gCtx.restore();
 }
 
+function touchDrawLine(ev) {
+    gCtx.save();
+    gCtx.strokeStyle = gColor;
+    gCtx.beginPath();
+    gCtx.moveTo(gLastPos.x, gLastPos.y);
+    setTouchPos(ev);
+    gCtx.lineTo(gLastPos.x, gLastPos.y);
+    gCtx.closePath()
+    gCtx.stroke();
+    gCtx.restore();
+}
 
 function drawRect(x, y) {
     gCtx.save()
@@ -114,7 +137,6 @@ function draw(ev) {
     const offsetX = ev.offsetX;
     const offsetY = ev.offsetY;
 
-    // const { offsetX, offsetY } = ev
     switch (gCurrShape) {
         case 'triangle':
             drawTriangle(offsetX, offsetY);
@@ -123,7 +145,7 @@ function draw(ev) {
             drawRect(offsetX, offsetY);
             break;
         case 'line':
-            drawLine(offsetX, offsetY, gLastPos.x, gLastPos.y);
+            drawLine(ev);
             break;
         case 'circle':
             drawArc(offsetX, offsetY);
@@ -144,7 +166,7 @@ function touchDraw(ev) {
             drawRect(offsetX, offsetY);
             break;
         case 'line':
-            drawLine(offsetX, offsetY);
+            touchDrawLine(ev);
             break;
         case 'circle':
             drawArc(offsetX, offsetY);
