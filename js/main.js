@@ -51,6 +51,7 @@ function setPosition(ev) {
 function drawLine(ev) {
     gCtx.save();
     gCtx.strokeStyle = gColor;
+    gCtx.lineWidth = 10;
     gCtx.beginPath();
     gCtx.moveTo(gLastPos.x, gLastPos.y);
     setPosition(ev);
@@ -63,6 +64,7 @@ function drawLine(ev) {
 function touchDrawLine(ev) {
     gCtx.save();
     gCtx.strokeStyle = gColor;
+    gCtx.lineWidth = 10;
     gCtx.beginPath();
     gCtx.moveTo(gLastPos.x, gLastPos.y);
     setTouchPos(ev);
